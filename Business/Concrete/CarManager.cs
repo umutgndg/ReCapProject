@@ -18,12 +18,15 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
-        }
-
-        public void Delete(Car car)
-        {
-            _carDal.Delete(car);
+            if (car.CarName.Length>=2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine(car.CarName + " Eklendi");
+            }
+            else
+            {
+                Console.WriteLine("Araba ismi 2 harfden büyük olmalı ve Günlük ücreti 0 dan büyük olmalı.");
+            }
         }
 
         public List<Car> GetAll()
@@ -31,14 +34,14 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public Car GetById(int carId)
+        public List<Car> GetAllByBrandId(int brandId)
         {
-            return _carDal.GetById(carId);
+            return _carDal.GetAll(p => p.BrandId == brandId);
         }
 
-        public void Update(Car car)
+        public List<Car> GetByDailyPrice(int min, int max)
         {
-            _carDal.Update(car);
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
         }
     }
 }
