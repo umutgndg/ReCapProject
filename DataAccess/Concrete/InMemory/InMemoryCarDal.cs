@@ -42,7 +42,7 @@ namespace DataAccess.Concrete.InMemory
 
         public Car GetById(int carId)
         {
-            return _cars.Find(c => c.CarId == carId);
+            return _cars.SingleOrDefault(c => c.CarId == carId);
         }
 
         public void Update(Car car)

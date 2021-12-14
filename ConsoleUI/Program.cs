@@ -60,8 +60,8 @@ namespace ConsoleUI
 
             Console.WriteLine("----------------------------------------");
 
-            var findCar = carManager.GetById(1);
-            Console.WriteLine(findCar.DailyPrice);
+            var result = carManager.GetById(1);
+            Console.WriteLine(result.DailyPrice);
         }
     }
 }
