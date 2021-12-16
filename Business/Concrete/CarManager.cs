@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,17 +17,15 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.CarName.Length>=2 && car.DailyPrice > 0)
+            if (car.CarName.Length<=2 && car.DailyPrice>0)
             {
-                _carDal.Add(car);
-                Console.WriteLine(car.CarName + " Eklendi");
+                return new ErrorResult("Araç ismi en az 2 karakter olmalıdır ve araç günlük fiyatı 0 dan büyük olmalıdır");
             }
-            else
-            {
-                Console.WriteLine("Araba ismi 2 harfden büyük olmalı ve Günlük ücreti 0 dan büyük olmalı.");
-            }
+            _carDal.Add(car);
+
+            return new SuccessResult("Araç eklendi");
         }
 
         public List<Car> GetAll()
@@ -41,7 +40,12 @@ namespace Business.Concrete
 
         public List<Car> GetByDailyPrice(int min, int max)
         {
-            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+            return _carDal.GetAll(c => c.DailyPrice >= min && c.DailyPrice <= max);
+        }
+
+        public Car GetById(int carId)
+        {
+            return _carDal.Get(c => c.CarId == carId);
         }
 
         public List<Car> GetCarsByBrandId(int brandId)

@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,9 +18,15 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
+            if (brand.BrandName.Length<2)
+            {
+                return new ErrorResult("Marka ismi min 2 karakter olmalıdır");
+            }
             _brandDal.Add(brand);
+
+            return new SuccessResult("Marka eklendi");
         }
 
         public List<Brand> GetAll()
