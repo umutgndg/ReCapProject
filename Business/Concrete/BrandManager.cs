@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -33,19 +34,23 @@ namespace Business.Concrete
         {
             if (DateTime.Now.Hour==22)
             {
-                return new ErrorResult();
+                return new ErrorDataResult<List<Brand>>(Messages.MaintenanceTime);
             }
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),true,"Markalar listelendi");
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
         }
 
-        public List<BrandDetailDto> GetBrandDetails()
+        public IDataResult<List<BrandDetailDto>> GetBrandDetails()
         {
-            return _brandDal.GetBrandDetails();
+            if (DateTime.Now.Hour == 23)
+            {
+                return new ErrorDataResult<List<BrandDetailDto>>(Messages.MaintenanceTime);
+            }
+            return new  SuccessDataResult<List<BrandDetailDto>>(_brandDal.GetBrandDetails());
         }
 
-        public Brand GetById(int brandId)
+        public IDataResult<Brand> GetById(int brandId)
         {
-            return _brandDal.Get(c => c.BrandId == brandId);
+            return new SuccessDataResult<Brand>(_brandDal.Get(c => c.BrandId == brandId));
         }
     }
 }

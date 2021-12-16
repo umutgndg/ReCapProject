@@ -20,17 +20,29 @@ namespace ConsoleUI
         private static void BrandTest()
         {
             BrandManager brandManager = new BrandManager(new EfBrandDal());
-            foreach (var brand in brandManager.GetBrandDetails())
+
+            var result = brandManager.GetBrandDetails();
+
+            if (result.Success==true)
             {
-                Console.WriteLine("{0} / {1} / {2} / {3} ", brand.CarName , brand.BrandName , brand.ColorName , brand.DailyPrice);
+                foreach (var brand in result.Data)
+                {
+                    Console.WriteLine("{0} / {1} / {2} / {3} ", brand.CarName, brand.BrandName, brand.ColorName, brand.DailyPrice);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+
         }
 
         private static void CarTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetByDailyPrice(100, 600))
+            foreach (var car in carManager.GetByDailyPrice(100, 600).Data)
             {
                 Console.WriteLine(car.CarName);
             }
