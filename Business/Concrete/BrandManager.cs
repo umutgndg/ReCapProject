@@ -29,9 +29,13 @@ namespace Business.Concrete
             return new SuccessResult("Marka eklendi");
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+            if (DateTime.Now.Hour==22)
+            {
+                return new ErrorResult();
+            }
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),true,"Markalar listelendi");
         }
 
         public List<BrandDetailDto> GetBrandDetails()

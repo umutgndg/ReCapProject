@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -21,11 +22,11 @@ namespace Business.Concrete
         {
             if (car.CarName.Length<=2 && car.DailyPrice>0)
             {
-                return new ErrorResult("Araç ismi en az 2 karakter olmalıdır ve araç günlük fiyatı 0 dan büyük olmalıdır");
+                return new ErrorResult(Messages.CarNameInvalid);
             }
             _carDal.Add(car);
 
-            return new SuccessResult("Araç eklendi");
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public List<Car> GetAll()
