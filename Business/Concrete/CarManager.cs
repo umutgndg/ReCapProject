@@ -20,13 +20,35 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.CarName.Length<=2 && car.DailyPrice>0)
+            if (car.CarName.Length<=2 && car.DailyPrice<0)
             {
                 return new ErrorResult(Messages.CarNameInvalid);
             }
             _carDal.Add(car);
 
             return new SuccessResult(Messages.CarAdded);
+        }
+
+        public IResult Delete(Car car)
+        {
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
+
+            _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
+        }
+
+        public IResult Update(Car car)
+        {
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorResult(Messages.MaintenanceTime);
+            }
+
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
 
         public IDataResult<List<Car>> GetAll()

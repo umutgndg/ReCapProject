@@ -10,42 +10,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //Data Transformation Object
-            //CarTest();
-            //IoC
-            BrandTest();
 
-        }
-
-        private static void BrandTest()
-        {
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-
-            var result = brandManager.GetBrandDetails();
-
-            if (result.Success==true)
-            {
-                foreach (var brand in result.Data)
-                {
-                    Console.WriteLine("{0} / {1} / {2} / {3} ", brand.CarName, brand.BrandName, brand.ColorName, brand.DailyPrice);
-                }
-            }
-            else
-            {
-                Console.WriteLine(result.Message);
-            }
-
-
-        }
-
-        private static void CarTest()
-        {
-            CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetByDailyPrice(100, 600).Data)
-            {
-                Console.WriteLine(car.CarName);
-            }
         }
     }
 }

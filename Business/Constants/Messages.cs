@@ -7,9 +7,52 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        public static string CarAdded = "Araç eklendi";
+        //Car
+        public static string CarAdded = "Araba eklendi";
+        public static string CarUpdated = "Araba güncellendi";
+        public static string CarDeleted = "Araba silindi";
+        public static string CarListed = "Arabalar listelendi";
         public static string CarNameInvalid = "Araç ismi geçersiz";
+
+        //Brand
+        public static string BrandAdded = "Marka eklendi";
+        public static string BrandUpdated = "Marka güncellendi";
+        public static string BrandDeleted = "Marka silindi";
+        public static string BrandListed = "Markalar listelendi";
+        public static string BrandNameInvalid = "Marka ismi geçersiz";
+
+        //Color
+        public static string ColorAdded = "Renk eklendi";
+        public static string ColorUpdated = "Renk güncellendi";
+        public static string ColorDeleted = "Renk silindi";
+        public static string ColorListed = "Renkler listelendi";
+        public static string ColorNameInvalid = "Renk ismi geçersiz";
+
+        //User
+        public static string UserAdded = "Kullanıcı eklendi";
+        public static string UserUpdated = "Kullanıcı güncellendi";
+        public static string UserDeleted = "Kullanıcı silindi";
+        public static string UserListed = "Kullanıcılar listelendi";
+        public static string UserNameInvalid = "Kullanıcı ismi geçersiz";
+
+        //Customer
+        public static string CustomerAdded = "Müşteri eklendi";
+        public static string CustomerUpdated = "Müşteri güncellendi";
+        public static string CustomerDeleted = "Müşteri silindi";
+        public static string CustomerListed = "Müşteriler listelendi";
+        public static string CustomerNameInvalid = "Müşteri ismi geçersiz";
+
+        //Rental
+        public static string RentalAdded = "Kiralanma bilgisi eklendi";
+        public static string RentalUpdated = "Kiralanma bilgisi güncellendi";
+        public static string RentalDeleted = "Kiralanma bilgisi silindi";
+        public static string RentalListed = "Kiralanma bilgileri listelendi";
+        public static string RentalAddErrorMessage = "Araç teslim edilmemiş";
+        public static string RentalDeleteErrorMessage = "Araç silinemedi";
+
+
+        public static string CompanyNameInvalid = "Şirket ismi geçersiz";
         public static string MaintenanceTime="Sistem bakımda";
-        public static string BrandsListed="Markalar listelendi";
+
     }
 }
