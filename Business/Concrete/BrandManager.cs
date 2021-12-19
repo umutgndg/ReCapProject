@@ -59,7 +59,7 @@ namespace Business.Concrete
             return new  SuccessDataResult<List<BrandDetailDto>>(_brandDal.GetBrandDetails());
         }
 
-        public IDataResult<Brand> GetById(int brandId)
+        public IDataResult<Brand> GetByBrandId(int brandId)
         {
             return new SuccessDataResult<Brand>(_brandDal.Get(c => c.BrandId == brandId));
         }
