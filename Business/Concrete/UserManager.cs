@@ -2,9 +2,9 @@
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
+using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -50,7 +50,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetByUserId(int userId)
         {
-            return new SuccessDataResult<User>(_userDal.Get(u => u.UserId == userId), Messages.UserListed);
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == userId), Messages.UserListed);
         }
 
         public IResult Update(User user)
