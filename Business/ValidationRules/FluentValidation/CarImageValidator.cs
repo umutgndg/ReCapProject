@@ -1,0 +1,16 @@
+﻿using Entities.Concrete;
+using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Business.ValidationRules.FluentValidation
+{
+    class CarImageValidator : AbstractValidator<CarImage>
+    {
+        public CarImageValidator()
+        {
+            RuleFor(c => c.CarId).NotEmpty().WithMessage("Boş geçilemez").GreaterThan(0).WithMessage("CarId sıfırdan büyük bir deger olmalı");
+        }
+    }
+}

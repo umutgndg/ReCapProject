@@ -14,12 +14,21 @@ namespace Business.Constants
         public static string CarListed = "Arabalar listelendi";
         public static string CarNameInvalid = "Araç ismi geçersiz";
 
+        //CarImage
+        internal static string ImageAdded = "Resim eklendi";
+        internal static string ImageDeleted = "Resim silindi";
+        internal static string ImageListed = "Resim listelendi";
+        internal static string ImageUpdated = "Resim güncellendi";
+        internal static string MaximumCarImageLimitExceded = "Maksimum araç fotoğrafı sayısına ulaşıldı";
+
         //Brand
         public static string BrandAdded = "Marka eklendi";
         public static string BrandUpdated = "Marka güncellendi";
         public static string BrandDeleted = "Marka silindi";
         public static string BrandListed = "Markalar listelendi";
         public static string BrandNameInvalid = "Marka ismi geçersiz";
+        internal static string BrandLimitExceded = "Marka limiti aşıldığı için yeni marka eklenemiyor";
+        internal static string BrandNameAlreadyExists = "Aynı modelden iki defa eklenemez";
 
         //Color
         public static string ColorAdded = "Renk eklendi";
@@ -54,5 +63,6 @@ namespace Business.Constants
         public static string CompanyNameInvalid = "Şirket ismi geçersiz";
         public static string MaintenanceTime="Sistem bakımda";
 
+       
     }
 }
