@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,6 +26,8 @@ namespace Business.Concrete
             _brandService = brandService;
         }
 
+        //Claim
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -90,7 +93,7 @@ namespace Business.Concrete
         private IResult CheckIfBrandLimitExceded()
         {
             var result = _brandService.GetAll();
-            if (result.Data.Count>15)
+            if (result.Data.Count>40)
             {
                 return new ErrorResult(Messages.BrandLimitExceded); 
             }
